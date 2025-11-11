@@ -21,7 +21,7 @@ function checkWinner(playerSelection,computerSelection){ //compares selections, 
     }
 }
 
-function playRound(playerSelection,computerSelection){ //displays round result winner
+function playRound(playerSelection,computerSelection){ //displays round result
     const result = checkWinner(playerSelection,computerSelection);
     if(result == "Tie"){
         return "Tie. Drat!";
@@ -38,11 +38,11 @@ function getPlayerChoice(){
     let validatedInput = false;
 
     while(validatedInput == false){
-        const choice = prompt("rock, paper, or scissors"); //prompts user for choice
+        const choice = prompt("rock, paper, or scissors"); //prompts user for choice in pop-up
         if(choice == null){
             continue;
         }
-        const choiceInLower = choice.toLowerCase(); //sets input to lowercase
+        const choiceInLower = choice.toLowerCase(); //sets input to lowercase for comparison
         if(choice.includes(choiceInLower)){
             validatedInput = true;
             return choiceInLower;
@@ -59,7 +59,7 @@ function game(){
         const computerSelection = getComputerChoice();
 
         console.log(playRound(playerSelection,computerSelection));
-        console.log("...");
+        console.log("---"); //just divider text
 
         if(checkWinner(playerSelection,computerSelection) == "Player"){ //increments scoreboard (ties not tracked)
             scorePlayer++;
@@ -68,7 +68,7 @@ function game(){
             scoreComputer++
         }
 
-        if(scorePlayer>scoreComputer){ //console reports current score
+        if(scorePlayer>scoreComputer){ //console reports current scoreboard
             console.log(`You are winning ${scorePlayer} - ${scoreComputer}. You got this!`);
         }
         else if (scoreComputer > scorePlayer){
